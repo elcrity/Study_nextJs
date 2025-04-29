@@ -1,4 +1,6 @@
 import Link from "next/link";
+import styles from "../../styles/home.module.css"
+import Movie from "../../Component/movie";
 
 // SSR network에 api url이 노출되지 않음. usestate의 훅 사용 필요 없음
 export const metadata = {
@@ -23,9 +25,11 @@ export default async function HomePage() {
     console.log("fetching");
     const movies = await getMovies();
     return (
-        <div>
-            {movies.map(movie => 
-            <li><Link href={`/movies/${movie.id}`}>{movie.title}</Link></li>)}
+        <div className={styles.container}>
+            {movies.map((movie) => (
+                <Movie key={movie.id} id={movie.id} 
+                title={movie.title} poster_path={movie.poster_path}></Movie>
+            ))}
         </div>
     )
 }
