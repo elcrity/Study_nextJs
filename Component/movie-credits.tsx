@@ -10,7 +10,7 @@ export default async function MovieCredits({ id }: { id: string }) {
 
     return (
         <div className={styles.head}>
-            <h3>감독/출연</h3>
+            <h2>감독/출연</h2>
             <div className={styles.credits}>
                 {credits.map((credit) => (
                     <div className={styles.credit} key={credit.id}>

@@ -3,19 +3,17 @@
   display: grid;
   grid-template-rows: 25px auto;
   width: 80%;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-bottom: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 290px));
+  gap: 20px;  
+  justify-content: start;
   height: auto;
   min-height: 160px;
-  /* 최소 높이 */
   max-height: 660px;
-  /* 최대 높이 */
   overflow-y: auto;
   overflow: scroll;
 }
@@ -25,6 +23,7 @@
 }
 
 .container iframe {
+  display: flex;
   border-radius: 10px;
   opacity: 0.8;
   transition: opacity 0.2s ease-in-out;
