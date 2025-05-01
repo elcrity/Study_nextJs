@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { API_URL } from "../app/(home)/page";
 import styles from "../styles/movei-info.module.css"
+import { API_URL } from "../config";
 
 async function getSimilars(id: string) {
     return fetch(`${API_URL}/${id}/similar`).then(response => response.json())
