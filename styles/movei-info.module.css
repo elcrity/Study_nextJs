@@ -28,3 +28,12 @@
     margin-top: 20px;
     gap: 20px;
   }
+
+  .link {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 한 줄에 3등분 */
+    gap: 10px; /* 링크 간격 조정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    margin-bottom: 20px;
+}
+
