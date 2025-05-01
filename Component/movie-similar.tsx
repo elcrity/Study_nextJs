@@ -98,6 +98,7 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
                     transform: `translateX(${currentPos}px)`, // 실제 이동 위치
                     transition: isDragging.current ? "none" : "transform 0.3s ease", // 드래그 중엔 애니메이션 없음
                 }}>
+                    {/* todo : 관련 영화 헤드 태그 추가하기 */}
                 {similars.map((similar) => (
                     <div className={styles.item} key={similar.id}>
                         <img className={styles.poster}

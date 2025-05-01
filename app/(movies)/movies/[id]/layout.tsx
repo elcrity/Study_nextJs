@@ -18,7 +18,6 @@ export default async function MovieLayout({
       <Suspense fallback={<h1>Loading movie info</h1>}>
         <MovieInfo id={id} />
       </Suspense>
-
       {/* Outlet 위치 - credits, providers가 이 자리에 렌더링 */}
       <Suspense>
         {children}

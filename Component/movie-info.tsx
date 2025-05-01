@@ -20,10 +20,10 @@ export default async function MovieInfo({ id }: { id: string }) {
             <div className={styles.link}>
                 <a href={movie.homepage} target="_blank">🏠Homepage</a>
                 <Link prefetch href={`/movies/${id}`}>
-                    🎞️관련 영상
+                    🎬관련 영상
                 </Link>
                 <Link prefetch href={`/movies/${id}/similar`}>
-                    🎞️비슷한 영화
+                    🎥비슷한 영화
                 </Link>
                 <Link prefetch href={`/movies/${id}/credits`}>
                     🧑‍🦲출연/배역

@@ -8,9 +8,9 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 290px));
-  gap: 20px;  
-  justify-content: start;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 300px));
+  gap: 20px;
+  padding: 0 auto;
   height: auto;
   min-height: 160px;
   max-height: 660px;
