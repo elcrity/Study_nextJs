@@ -17,9 +17,8 @@ export default async function MovieInfo({ id }: { id: string }) {
             <h3 className={styles.average}>⭐️{movie.vote_average.toFixed(1)}</h3>
             <p className={styles.info}>{movie.overview}</p>
             <p>상영시간 : {movie.runtime}분</p>
-            
             <div className={styles.link}>
-            <a href={movie.homepage} target="_blank">🏠Homepage</a>
+                <a href={movie.homepage} target="_blank">🏠Homepage</a>
                 <Link prefetch href={`/movies/${id}`}>
                     🎞️관련 영상
                 </Link>
