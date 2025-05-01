@@ -1,4 +1,4 @@
-import { API_URL } from "../app/(home)/page";
+import { API_URL } from "../config";
 import styles from "../styles/movie-credits.module.css"
 
 async function getCredits(id: string) {

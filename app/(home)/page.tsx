@@ -1,13 +1,15 @@
 import Link from "next/link";
 import styles from "../../styles/home.module.css"
 import Movie from "../../Component/movie";
+import { API_URL } from "../../config";
 
 // SSR network에 api url이 노출되지 않음. usestate의 훅 사용 필요 없음
 export const metadata = {
     title : "home",
 }
 
-export const API_URL = "https://nomad-movies.nomadcoders.workers.dev/movies"
+
+
 
 // ssr이라 db와 직접 통신해도 안전함
 // strema으로 순차적으로 전송 layout, navigation -> loading component -> backend작업 종료 -> page 렌더링
