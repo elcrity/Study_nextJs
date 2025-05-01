@@ -31,7 +31,7 @@
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 10px;
-    height: 270px;
+    height: 275px;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -48,7 +48,7 @@
 
 /* 텍스트 스타일 */
 .credit p {
-    margin: 4px 0;
+    margin: 6px 0;
     text-align: center;
     font-size: 14px;
     color: black;

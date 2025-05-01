@@ -7,8 +7,6 @@ async function getVideos(id: string) {
 
 export default async function MovieVideos({ id }: { id: string }) {
     const videos = await getVideos(id);
-    if(videos){console.log("data");
-    }
     return (
         <div className={styles.head}>
             <h2>관련 영상</h2>

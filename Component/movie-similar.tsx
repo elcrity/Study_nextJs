@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import styles from "../styles/movie-similar.module.css";
+import Link from "next/link";
 
 export default function MovieSimilar({ similars }: { similars: any[] }) {
     // wrapperRef: 스크롤 제한 범위, 스크롤시 최대 범위 제한
@@ -43,19 +44,15 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
         // 마우스 클릭 위치
         mousePos.current = e.pageX;
         startPos.current = currentPos;
-        console.log("e.pageX : " + mousePos.current);
 
     };
 
     // 마우스 이동 시 슬라이더 currentPos 업데이트
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!isDragging.current) return;
-        console.log("startPos : " + startPos.current);
-        console.log("maxScroll : " + -maxScroll.current);
         const deltaX = e.pageX - mousePos.current;
         // 현재 시작 스크롤 범위+변화값과 -maxScroll 값중 큰 값과, 이 값과 0중 작은 값을next translate로 반환
         const nextTranslate = clamp(startPos.current + deltaX, -maxScroll.current, 0);
-        console.log("transelatex : " + nextTranslate);
 
 
         setCurrentPos(nextTranslate);
@@ -110,10 +107,11 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
                             // 이미지 기본 드래그 방지
                             onDragStart={(e) => e.preventDefault()} />
                         <h3 className={styles.average}>⭐️{similar.vote_average.toFixed(1)}</h3>
-                        <div className={styles.overview}>
+                        <p>{similar.id}</p>
+                        <Link href={`/movies/${similar.id}/similar`} className={styles.overview}>
                             <h2 className={styles.title}>{similar.original_title}</h2>
                             <p className={styles.content}>{similar.overview}</p>
-                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>
