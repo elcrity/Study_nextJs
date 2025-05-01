@@ -1,11 +1,16 @@
 import { Suspense } from "react";
 import MovieCredits from "../../../../../Component/movie-credits";
 
-export default function MovieCreditsPage({ params }: { params: { id: string } }) {
-    return(<div>
-        <Suspense>
-            <MovieCredits id={params.id} />;
-        </Suspense>
-    </div>
-    )
+type Params = Promise<{ id: string }>;
+
+export default async function MovieCreditsPage({ params }: { params: Params }) {
+    const { id } = await params; // 비동기적으로 params 처리
+
+    return (
+        <div>
+            <Suspense>
+                <MovieCredits id={id} />
+            </Suspense>
+        </div>
+    );
 }
