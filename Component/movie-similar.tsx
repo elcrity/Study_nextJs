@@ -108,10 +108,12 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
                             onDragStart={(e) => e.preventDefault()} />
                         <h3 className={styles.average}>⭐️{similar.vote_average.toFixed(1)}</h3>
                         <p>{similar.id}</p>
-                        <Link href={`/movies/${similar.id}/similar`} className={styles.overview}>
+
+                        <div className={styles.overview}>
                             <h2 className={styles.title}>{similar.original_title}</h2>
                             <p className={styles.content}>{similar.overview}</p>
-                        </Link>
+                            <Link className={styles.link} href={`/movies/${similar.id}/similar`} >바로가기 &rarr;</Link>
+                        </div>
                     </div>
                 ))}
             </div>
