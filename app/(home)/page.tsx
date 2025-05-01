@@ -22,7 +22,6 @@ async function getMovies(){
 
 // async해야 await할수 있음
 export default async function HomePage() {
-    console.log("fetching");
     const movies = await getMovies();
     return (
         <div className={styles.container}>
