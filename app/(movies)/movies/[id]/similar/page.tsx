@@ -2,10 +2,10 @@ import { Suspense } from "react";
 import MovieSimilar from "../../../../../Component/movie-similar"
 
 interface IParams {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
-export default async function MovieDetailPage({ params }: IParams) {
+export default async function SimilarPage({ params }: IParams) {
     const { id } = await params;
     return (
         <div>

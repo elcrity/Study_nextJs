@@ -9,8 +9,6 @@ export const metadata = {
 }
 
 
-
-
 // ssr이라 db와 직접 통신해도 안전함
 // strema으로 순차적으로 전송 layout, navigation -> loading component -> backend작업 종료 -> page 렌더링
 async function getMovies(){
