@@ -30,11 +30,11 @@ export default async function MovieDetailPage({
       <Suspense fallback={<h1>Loading movie info</h1>}>
         <MovieInfo id={id} />
       </Suspense>
-      <Suspense fallback={<h1>Loading movie videos</h1>}>
-        <MovieVideos id={id} />
-      </Suspense>
-      <Suspense fallback={<h1>Loading movie credits</h1>}>
+      <Suspense>
         <MovieCredits id={id} />
+      </Suspense>
+      <Suspense>
+        <MovieVideos id={id} />
       </Suspense>
     </div>
   );
