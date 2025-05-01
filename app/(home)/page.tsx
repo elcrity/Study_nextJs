@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "../../styles/home.module.css"
 import Movie from "../../Component/movie";
-import { API_URL } from "../../config";
+import { API_URL } from "../constants";
 
 // SSR network에 api url이 노출되지 않음. usestate의 훅 사용 필요 없음
 export const metadata = {
