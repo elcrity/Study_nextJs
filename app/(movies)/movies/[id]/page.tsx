@@ -4,10 +4,10 @@ import MovieVideos from "../../../../Component/movie-videos";
 import MovieCredits from "../../../../Component/movie-credits";
 import { Metadata } from "next";
 
-// ✅ 타입을 Promise로 선언 (Next 15.1+ 방식)
+// 타입을 Promise로 선언 (Next 15.1+)
 type Params = Promise<{ id: string }>;
 
-// ✅ generateMetadata에서 await params 사용
+// generateMetadata에서 params -> await params으로 변경
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { id } = await params;
   const movie = await getMovie(id);
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-// ✅ default export에서도 동일하게 await params 사용
+// MovieDetailPage에서도 동일하게 params -> await params으로 변경
 export default async function MovieDetailPage({
   params,
 }: {
