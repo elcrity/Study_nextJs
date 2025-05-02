@@ -21,13 +21,14 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
     const maxScroll = useRef(0);
     // 슬라이더 너비와 wrapper 너비를 기준으로 maxScroll 계산
     useEffect(() => {
+        // ref로 div의 값 가져오기
         const wrapper = wrapperRef.current;
         const slider = sliderRef.current;
         // dom이 불러와져 wrapper와 slider가 있으면
         if (wrapper && slider) {
-            // 내용 영역(padding 포함, border 제외)
+            // 내용 영역(가시적 영역)
             const wrapperWidth = wrapper.clientWidth;
-            // 스크롤 가능 전체 너비 > clientWidth, 즉 wrapper width가 500px이고 scrollwidth가 1000px이면 가려진 500px만큼 스크롤 가능
+            // 전체 너비 > clientWidth, 즉 wrapper width가 500px이고 scrollwidth가 1000px이면 가려진 500px만큼 스크롤 가능
             const sliderWidth = slider.scrollWidth;
             // 스크롤 가능한 범위
             maxScroll.current = Math.max(sliderWidth - wrapperWidth, 0);
@@ -53,8 +54,6 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
         const deltaX = e.pageX - mousePos.current;
         // 현재 시작 스크롤 범위+변화값과 -maxScroll 값중 큰 값과, 이 값과 0중 작은 값을next translate로 반환
         const nextTranslate = clamp(startPos.current + deltaX, -maxScroll.current, 0);
-
-
         setCurrentPos(nextTranslate);
     };
 
@@ -82,41 +81,42 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
 
 
     return (
-        <div className={styles.wrapper}
-            ref={wrapperRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleMouseUp}>
+        <div className={styles.container}>
+            관련 영화
+            <div className={styles.wrapper}
+                ref={wrapperRef}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleMouseUp}>
 
-            <div className={styles.slider}
-                ref={sliderRef}
-                style={{
-                    transform: `translateX(${currentPos}px)`, // 실제 이동 위치
-                    transition: isDragging.current ? "none" : "transform 0.3s ease", // 드래그 중엔 애니메이션 없음
-                }}>
+                <div className={styles.slider}
+                    ref={sliderRef}
+                    style={{
+                        transform: `translateX(${currentPos}px)`, // 실제 이동 위치
+                        transition: isDragging.current ? "none" : "transform 0.3s ease", // 드래그 중엔 애니메이션 없음
+                    }}>
                     {/* todo : 관련 영화 헤드 태그 추가하기 */}
-                {similars.map((similar) => (
-                    <div className={styles.item} key={similar.id}>
-                        <img className={styles.poster}
-                            src={similar.poster_path}
-                            alt={similar.title}
-                            draggable={false}
-                            // 이미지 기본 드래그 방지
-                            onDragStart={(e) => e.preventDefault()} />
-                        <h3 className={styles.average}>⭐️{similar.vote_average.toFixed(1)}</h3>
-                        <p>{similar.id}</p>
-
-                        <div className={styles.overview}>
-                            <h2 className={styles.title}>{similar.original_title}</h2>
-                            <p className={styles.content}>{similar.overview}</p>
-                            <Link className={styles.link} href={`/movies/${similar.id}/similar`} >바로가기 &rarr;</Link>
+                    {similars.map((similar) => (
+                        <div className={styles.item} key={similar.id}>
+                            <img className={styles.poster}
+                                src={similar.poster_path}
+                                alt={similar.title}
+                                draggable={false}
+                                // 이미지 기본 드래그 방지
+                                onDragStart={(e) => e.preventDefault()} />
+                            <h3 className={styles.average}>⭐️{similar.vote_average.toFixed(1)}</h3>
+                            <div className={styles.overview}>
+                                <h2 className={styles.title}>{similar.original_title}</h2>
+                                <p className={styles.content}>{similar.overview}</p>
+                                <Link className={styles.link} href={`/movies/${similar.id}/similar`} >바로가기 &rarr;</Link>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );

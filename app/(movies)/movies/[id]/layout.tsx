@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import MovieInfo from "../../../../Component/movie-info";
-import Link from "next/link";
 
 type Params = Promise<{ id: string }>;
 
