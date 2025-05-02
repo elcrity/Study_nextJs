@@ -1,7 +1,17 @@
 import { Suspense } from "react";
-import MovieInfo from "../../../../Component/movie-info";
+import MovieInfo, { getMovie } from "../../../../Component/movie-info";
+import { Metadata } from "next";
 
 type Params = Promise<{ id: string }>;
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { id } = await params;
+  const movie = await getMovie(id);
+
+  return {
+    title: movie.title,
+  };
+}
 
 export default async function MovieLayout({ 
   children, 
