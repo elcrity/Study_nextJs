@@ -82,7 +82,7 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
 
     return (
         <div className={styles.container}>
-            관련 영화
+            추천 영화
             <div className={styles.wrapper}
                 ref={wrapperRef}
                 onMouseDown={handleMouseDown}
@@ -112,7 +112,7 @@ export default function MovieSimilar({ similars }: { similars: any[] }) {
                             <div className={styles.overview}>
                                 <h2 className={styles.title}>{similar.original_title}</h2>
                                 <p className={styles.content}>{similar.overview}</p>
-                                <Link className={styles.link} href={`/movies/${similar.id}/similar`} >바로가기 &rarr;</Link>
+                                <Link prefetch className={styles.link} href={`/movies/${similar.id}/similar`} >바로가기 &rarr;</Link>
                             </div>
                         </div>
                     ))}

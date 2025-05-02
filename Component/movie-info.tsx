@@ -23,7 +23,7 @@ export default async function MovieInfo({ id }: { id: string }) {
                     🎬관련 영상
                 </Link>
                 <Link prefetch href={`/movies/${id}/similar`}>
-                    🎥비슷한 영화
+                    🎥추천 영화
                 </Link>
                 <Link prefetch href={`/movies/${id}/credits`}>
                     🧑‍🦲출연/배역
